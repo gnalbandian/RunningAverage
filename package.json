@@ -1,0 +1,3 @@
+"dependencies" : {
+  "CircularBuffer" : "git://github.com/rlogiacco/CircularBuffer"
+}
