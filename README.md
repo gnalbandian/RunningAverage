@@ -3,9 +3,10 @@
 [![License: MIT](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/RobTillaart/RunningAverage/blob/master/LICENSE)
 [![GitHub release](https://img.shields.io/github/release/RobTillaart/RunningAverage.svg?maxAge=3600)](https://github.com/RobTillaart/RunningAverage/releases)
 
-# This library is based upon RobTillaart lib with modification to make use of static allocation by using circular buffer library provided by rlogiacco
-## RunningAverage original library: https://github.com/RobTillaart/RunningAverage
-## Circular buffer library: https://github.com/rlogiacco/CircularBuffer
+# ATENTION
+## This library is based upon RobTillaart lib with modification to make use of static allocation by using circular buffer library provided by rlogiacco
+### RunningAverage original library: https://github.com/RobTillaart/RunningAverage
+### Circular buffer library: https://github.com/rlogiacco/CircularBuffer
 
 # RunningAverage
 
