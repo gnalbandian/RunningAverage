@@ -1,3 +1,7 @@
+#ifndef RUNNINGAVERAGE_H_
+#define RUNNINGAVERAGE_H_
+#include <stdint.h>
+#include <stddef.h>
 #pragma once
 //
 //    FILE: RunningAverage.h
@@ -10,56 +14,72 @@
 // HISTORY: See RunningAverage.cpp
 
 
-#include "Arduino.h"
+// #include "Arduino.h"
+#include "CircularBuffer.h"
 
 
 #define RUNNINGAVERAGE_LIB_VERSION    (F("0.3.2"))
 
 
-class RunningAverage
+template<typename dataType, size_t bufferSize> class RunningAverage
 {
 public:
-  explicit RunningAverage(const uint8_t size);
-  ~RunningAverage();
+//   RunningAverage(const uint8_t size);
 
-  void    clear();
-  void    add(const float value)    { addValue(value); };
-  void    addValue(const float);
-  void    fillValue(const float, const uint8_t);
-  float   getValue(const uint8_t);
+    // static constexpr uint8_t capacity = static_cast<uint8_t>(T);
 
-  float   getAverage();      // iterates over all elements.
-  float   getFastAverage() const;  // reuses previous calculated values.
-
-  // return statistical characteristics of the running average
-  float   getStandardDeviation() const;
-  float   getStandardError() const;
-
-  // returns min/max added to the data-set since last clear
-  float   getMin() const { return _min; };
-  float   getMax() const { return _max; };
-
-  // returns min/max from the values in the internal buffer
-  float   getMinInBuffer() const;
-  float   getMaxInBuffer() const;
-
-  // return true if buffer is full
-  bool    bufferIsFull() const { return _count == _size; };
-
-  float   getElement(uint8_t idx) const;
-
-  uint8_t getSize() const { return _size; }
-  uint8_t getCount() const { return _count; }
+    /**
+	 * Disables copy constructor
+	 */
+	// RunningAverage(const RunningAverage&) = delete;
+	// RunningAverage(RunningAverage&&) = delete;
 
 
-protected:
-  uint8_t _size;
-  uint8_t _count;
-  uint8_t _index;
-  float   _sum;
-  float*  _array;
-  float   _min;
-  float   _max;
+    RunningAverage();
+    ~RunningAverage();
+
+    void    clear();
+    // void    add(const float value)    { addValue(value); };
+    void    addValue(const dataType);
+    // void    fillValue(const float, const uint8_t);
+    // float   getValue(const uint8_t);
+
+    float   getAverage();      // iterates over all elements.
+    float   getFastAverage() const;  // reuses previous calculated values.
+
+    // return statistical characteristics of the running average
+    float   getStandardDeviation() const;
+    float   getStandardError() const;
+
+    // returns min/max added to the data-set since last clear
+    dataType   getMin() const { return _min; };
+    dataType   getMax() const { return _max; };
+
+    // returns min/max from the values in the internal buffer
+    dataType   getMinInBuffer() const;
+    dataType   getMaxInBuffer() const;
+
+    // return true if buffer is full
+    bool    bufferIsFull() const { return _array.isFull(); };
+
+    dataType   getElement(uint8_t idx) const;
+
+    size_t getCapacity() const { return _array.capacity(); };
+    uint8_t getCount() const { return _array.size(); }
+
+
+    protected:
+    // uint8_t _size;
+    // uint8_t _count;
+    // uint8_t _index;
+    float   _sum;
+    // float*  _array;
+    dataType   _min;
+    dataType   _max;
+    
+    CircularBuffer<dataType, bufferSize> _array;
 };
 
-// -- END OF FILE --
+#include <RunningAverage.tpp>
+// -- END OF FILE --t
+#endif
