@@ -7,7 +7,7 @@
 ## This library is based upon RobTillaart lib with modification to make use of static allocation by using circular buffer library provided by rlogiacco
 ### RunningAverage original library: https://github.com/RobTillaart/RunningAverage
 ### Circular buffer library: https://github.com/rlogiacco/CircularBuffer
-
+### Example's files haven't been updated. Sorry!
 # RunningAverage
 
 Arduino library to calculate the running average by means of a circular buffer.
