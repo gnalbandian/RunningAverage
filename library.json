@@ -8,12 +8,17 @@
       "name": "Rob Tillaart",
       "email": "Rob.Tillaart@gmail.com",
       "maintainer": true
+    },
+    {
+      "name": "Gonzalo Nalbandian",
+      "email": "gonzalonalbandian@gmail.com",
+      "maintainer": true
     }
   ],
   "repository":
   {
     "type": "git",
-    "url": "https://github.com/RobTillaart/RunningAverage.git"
+    "url": "https://github.com/gnalbandian/RunningAverage.git"
   },
   "version": "0.3.2",
   "frameworks": "arduino",
