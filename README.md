@@ -15,8 +15,8 @@ Arduino library to calculate the running average by means of a circular buffer.
 
 ## Description
 The RunningAverage object gives a running average of the last N numbers, giving them
-all equal weight. This is done by adding new data to an internal circular buffer, 
-removing the oldest and replace it by the newest. The size of the internal buffer 
+all equal weight. This is done by feeding new data to a internal circular buffer, 
+popping out the oldest dataitem and replacing it by the newest. The size of the internal buffer 
 can be set in the constructor.
 
 By keeping track of the **\_sum** the runningAverage can be calculated fast (only 1 division).
